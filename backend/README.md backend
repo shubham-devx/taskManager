@@ -1,0 +1,211 @@
+# Task Manager Backend API
+
+## Overview
+
+This project is a **RESTful backend API for a Task Manager application**.
+It supports user authentication, role-based access control, and CRUD operations for tasks.
+
+The API is built using **Node.js, Express.js, and MongoDB**, and secured with **JWT authentication**.
+
+---
+
+## Tech Stack
+
+* Node.js
+* Express.js
+* MongoDB + Mongoose
+* JWT Authentication
+* bcryptjs (Password Hashing)
+* express-validator (Input Validation)
+* Swagger (API Documentation)
+
+---
+
+## Features
+
+* User registration and login
+* Password hashing with bcrypt
+* JWT based authentication
+* Role based authorization (User / Admin)
+* CRUD operations for tasks
+* Input validation middleware
+* Global error handling
+* API versioning (`/api/v1`)
+* Swagger API documentation
+
+---
+
+## Project Structure
+
+```
+backend
+│
+├── config
+│   └── db.js
+│
+├── controllers
+│   ├── authController.js
+│   └── taskController.js
+│
+├── middleware
+│   ├── authMiddleware.js
+│   ├── roleMiddleware.js
+│   ├── validation.js
+│   └── errorHandler.js
+│
+├── models
+│   ├── User.js
+│   └── Task.js
+│
+├── routes
+│   ├── authRoutes.js
+│   └── taskRoutes.js
+│
+├── utils
+│   └── generateToken.js
+│
+├── docs
+│   └── swagger.js
+│
+├── server.js
+├── package.json
+└── .env
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file inside the backend folder.
+
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/taskmanager
+JWT_SECRET=mysecretkey
+```
+
+---
+
+## Installation
+
+Clone the repository:
+
+```
+git clone <repository-url>
+cd backend
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Run the backend server:
+
+```
+npm run dev
+```
+
+Server will start at:
+
+```
+http://localhost:5000
+```
+
+---
+
+## API Endpoints
+
+### Authentication
+
+Register User
+
+```
+POST /api/v1/auth/register
+```
+
+Login User
+
+```
+POST /api/v1/auth/login
+```
+
+---
+
+### Task Routes (Protected)
+
+Get All Tasks
+
+```
+GET /api/v1/tasks
+```
+
+Create Task
+
+```
+POST /api/v1/tasks
+```
+
+Update Task
+
+```
+PUT /api/v1/tasks/:id
+```
+
+Delete Task (Admin Only)
+
+```
+DELETE /api/v1/tasks/:id
+```
+
+---
+
+## Authentication
+
+Protected routes require a JWT token.
+
+Example header:
+
+```
+Authorization: Bearer <token>
+```
+
+---
+
+## API Documentation
+
+Swagger documentation is available at:
+
+```
+http://localhost:5000/api-docs
+```
+
+---
+
+## Testing APIs
+
+You can test APIs using:
+
+* Postman
+* Swagger UI
+
+Postman collection is included in the project.
+
+---
+
+## Scalability Notes
+
+The backend is designed to be scalable using:
+
+* Modular folder structure
+* API versioning
+* JWT stateless authentication
+* Middleware based architecture
+
+Future improvements may include:
+
+* Redis caching
+* Docker deployment
+* Load balancing
+* Microservices architecture
